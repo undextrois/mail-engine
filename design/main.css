@@ -1,0 +1,49 @@
+.defafont {
+	color: black;
+	font-family: tahoma;
+	font-size: 11px;
+}
+.defafont_w {
+	color: white;
+	font-family: tahoma;
+	font-size: 11px;
+}
+.defafont_b {
+	color: black;
+	font-family: tahoma;
+	font-size: 11px;
+}
+.menubg {
+	background: #CC3300;
+}
+.defaltbg {
+	background: #FFFFFF;
+}
+.menubox {
+	color: black;
+	font-family: tahoma;
+	font-size: 11px;
+	border: 2 solid #CC3300;
+}
+.menulink {
+	color: #000000; 
+	text-decoration: none;
+}
+.menumouseover {
+	background-color: #FFD1C1;
+}
+.ukbots {
+	background: #FFFFFF;
+	font-family: tahoma;
+	font-size: 11px;
+	color: black;
+	position: relative;
+	height: 18;
+}
+.uktextbox,
+.ukdropdown,
+.uktext {
+	font-family: tahoma;
+	font-size: 11px;
+	color: black;
+}

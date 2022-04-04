@@ -1,0 +1,39 @@
+  <form method="post" action="{options_form_action}">
+  <table border="0">
+    <tr>
+      <td class="defafont_b" align="center" colspan="2"><b>{pop_edit_title} POP3 Account</td>
+    </tr>
+    <tr>
+      <td class="defafont_b" width="50" valign="top"><b>Server:</b></td>
+      <td class="defafont_b" valign="top"><input class="uktextbox" type="text" name="server" value="{server_value}" size="50"></td>
+    </tr>
+    <tr>
+      <td class="defafont_b" width="50" valign="top"><b>Username:</b></td>
+      <td class="defafont_b" valign="top"><input class="uktextbox" type="text" name="username" value="{username_value}" size="50"></td>
+    </tr>
+    <tr>
+      <td class="defafont_b" width="50" valign="top"><b>Password:</b></td>
+      <td class="defafont_b" valign="top"><input class="uktextbox" type="text" name="password" value="{password_value}" size="50"></td>
+    </tr>
+    <tr>
+      <td class="defafont_b" width="50" valign="top"><b>Email Address:</b></td>
+      <td class="defafont_b" valign="top"><input class="uktextbox" type="text" name="email" value="{email_value}" size="50"></td>
+    </tr>
+    <tr>
+      <td class="defafont_b" width="50" valign="top">&nbsp;</td>
+      <td class="defafont_b" valign="top"><input type="checkbox" name="default" value="1"{default_checked}> <b>Default</b></td>
+    </tr>
+    <tr>
+      <td class="defafont_b" width="50" valign="top">&nbsp;</b></td>
+      <td class="defafont_b" valign="top"><input type="checkbox" name="leave" value="1"{leave_checked}> <b>Leave a copy of messages in server</b></td>
+    </tr>
+    <tr>
+      <td width="100%" class="defafont_b" colspan="2" align="center">
+       <br><input type="submit" value="     Save     " class="ukbots">
+      </td>
+    </tr>
+  </table>
+  <input type="hidden" name="Action" value="Save Account">
+  <input type="hidden" name="pop_id" value="{pop_id}">
+  <input type="hidden" name="edit" value="{edit_pop}">
+  </form>

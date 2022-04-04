@@ -1,0 +1,144 @@
+  <script language="javascript" type="text/javascript">
+    function popUp(theurl,thewindow,thewidth,theheight,thescroll,theResize) {
+      var iMyWidth;
+      var iMyHeight;
+      var scroll;
+      var win2;
+      var features = '';
+      var isResizable;
+
+    	if (theResize)
+    		isResizable = 'yes';
+    	else
+    		isResizable = 'no';
+
+      if(thescroll)
+       scroll = 'yes';
+      else
+       scroll = 'no'
+
+      //gets top and left positions based on user's resolution so hint window is centered.
+      iMyWidth = (window.screen.width/2) - ((thewidth/2) + 10);
+      //half the screen width minus half the new window width (plus 5 pixel borders).
+      iMyHeight = (window.screen.height/2) - ((theheight/2) + 50);
+      //half the screen height minus half the new window height (plus title and status bars).
+
+      features = "status=yes,height="+theheight+",width="+thewidth+",titlebar=no"+",resizable="+isResizable+",left="+iMyWidth+",top="+
+        iMyHeight+",screenX="+iMyWidth+",screenY="+iMyHeight+",scrollbars="+scroll;
+
+      win2 = window.open(theurl,thewindow,features);
+      win2.focus();
+
+      return win2;
+    }
+
+    function delete_attachment(Form, Attachment,AttName){
+      if(confirm('Are you sure you want to delete \''+AttName+'\'?')){
+        Form.attachment_id.value = Attachment;
+        Form.Action.value = 'Delete';
+        Form.submit();
+      }
+    }
+  </script>
+	<br>
+	<form method="post" name="{FormName}" ENCTYPE="multipart/form-data" action="{FormAction}">
+  <table border="0" cellspacing="0" cellpadding="3" width="100%">
+    <tr>
+      <td colspan="2">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="defafont_b"><img border="0" src="images/inboxicon.gif" width="38" height="39"></td>
+            <td class="defafont_b"><b><font size="5">Compose Email</font></b></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" class="defafont_b" colspan="2">
+        <table border="0" cellspacing="0" cellpadding="3" width="690">
+          <tr>
+            <td class="defafont_b" width="50" valign="top"><b>From:</b></td>
+            <td class="defafont_b" width="640" valign="top">
+              <select size="1" name="from_account" class="ukdropdown">
+              <!-- BEGIN POPACCOUNTS -->
+              <option value="{pop_id}"{selected}>{pop_display}</option>
+              <!-- END POPACCOUNTS -->
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="defafont_b" width="50" valign="top"><b>To:</b></td>
+            <td class="defafont_b" width="640" valign="top"><input class="uktextbox" type="text" name="to" value="{to_value}" size="80"> <a href="javascript:void(0)" onclick="popUp('email-contacts.php?emails='+EmailForm.to.value+'&field=EmailForm.to', 'contactsWindow', 600, 450)"><img src="images/contacts.gif" width="15" height="12" border="0" alt="Contacts"></a></td>
+          </tr>
+          <tr>
+            <td class="defafont_b" width="50" valign="top"><b>CC:</b></td>
+            <td class="defafont_b" width="640" valign="top"><input class="uktextbox" type="text" name="cc" value="{cc_value}" size="80"> <a href="javascript:void(0)" onclick="popUp('email-contacts.php?emails='+EmailForm.cc.value+'&field=EmailForm.cc', 'contactsWindow', 600, 450)"><img src="images/contacts.gif" width="15" height="12" border="0" alt="Contacts"></a></td>
+          </tr>
+          <tr>
+            <td class="defafont_b" width="50" valign="top"><b>BCC:</b></td>
+            <td class="defafont_b" width="640" valign="top"><input class="uktextbox" type="text" name="bcc" value="{bcc_value}" size="80"> <a href="javascript:void(0)" onclick="popUp('email-contacts.php?emails='+EmailForm.bcc.value+'&field=EmailForm.bcc', 'contactsWindow', 600, 450)"><img src="images/contacts.gif" width="15" height="12" border="0" alt="Contacts"></a></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" class="defafont_b" colspan="2">
+        <hr color="#000000" width="600" align="left">
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" class="defafont_b" colspan="2">
+        <table border="1" bordercolor="#000000" cellspacing="0" bordercolordark="#000000" bordercolorlight="#FFFFFF" cellpadding="3">
+          <tr>
+            <td width="100%" bgcolor="#CCCCCC" class="defafont_b"><b>SUBJECT: </b><input class="uktextbox" type="text" name="subject" value="{subject_value}" size="113"></td>
+          </tr>
+          <tr>
+            <td width="100%" class="defafont_b"><textarea class="uktextbox" name="message" cols="122" rows="17">{message_value}</textarea></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" class="defafont_b" colspan="2">
+        <b>This email contains</b>
+        <input type="radio" name="content_type" value="text/plain"{checked_plain}> plain text
+        <input type="radio" name="content_type" value="text/html"{checked_html}> html
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" class="defafont_b" colspan="2">
+        <hr color="#000000" width="600" align="left">
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" class="defafont_b" colspan="2">
+       <input type="button" value="Add Attachment(s)" class="ukbots" onclick="popUp('attachments.php?message_id={message_id}', 'AttachmentsWindow', 450, 310, 1)">
+       <br>
+       <table border="1" bordercolorlight="#FFFFFF" cellspacing="0" cellpadding="3" bordercolordark="#000000" bordercolor="#000000" width="200">
+          <tr>
+            <td bgcolor="#CCCCCC" class="defafont_b" colspan="4">Attachments:</td>
+          </tr>
+          <!-- BEGIN ATTACHMENTS -->
+          <tr>
+            <td class="defafont_b" align="center"><img border="0" src="images/{attachment_icon}"></td>
+            <td class="defafont_b">{attachment_filename}</td>
+            <td class="defafont_b" align="right" nowrap>{attachment_size}</td>
+            <td class="defafont_b"><input type="button" value="Delete" class="ukbots" onclick="delete_attachment(this.form, '{attachment_id}', '{attachment_filename2}')"></td>
+          </tr>
+          <!-- END ATTACHMENTS -->
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" class="defafont_b" colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="100%" class="defafont_b" colspan="2">
+       <input type="submit" value="   Send Email   " class="ukbots">
+      </td>
+    </tr>
+  </table>
+	<input type="hidden" name="Action" value="{FormActionValue}">
+	<input type="hidden" name="message_id" value="{message_id}">
+	<input type="hidden" name="attachment_id" value="">
+	</form>

@@ -1,0 +1,132 @@
+<script language="javascript">
+<!--
+  function iconchg(val, id) {
+           if ((id) && (val != 6)) {
+               document.fminbx3.action.value = val;
+               document.fminbx3.id.value = id;
+               document.fminbx3.submit();
+           } else {
+                 var reg = /chk_(.*)/i;
+                 var ids;
+                 for(var i=0; i<document.fminbx3.elements.length; i++){
+                     if(reg.test(document.fminbx3.elements[i].name) == true) {
+                        if (document.fminbx3.elements[i].checked == true) {
+                            if(ids) { ids = ids + document.fminbx3.elements[i].value + ",";
+                            } else { ids = document.fminbx3.elements[i].value + ","; }
+                        }
+                     }
+                 }
+                 if (val == 6) {
+                         document.fminbx3.id.value = id;
+                 }
+                 document.fminbx3.chkids.value = ids;
+                 document.fminbx3.action.value = val;
+                 document.fminbx3.submit();
+         }
+  }
+//-->
+</script>
+                  <table border="0" cellspacing="0" cellpadding="3" width="100%">
+                    <tr>
+                      <td width="50%">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="defafont_b" colspan="2">
+                              <table border="0" cellspacing="0" cellpadding="3">
+                                <tr>
+                                  <td class="defafont_b">You Are Now
+                                    Viewing&nbsp;</td>
+                                  <td class="defafont_b">
+                                   <form method="POST" name="fminbx1" action="inbox.php">
+                                      <select size="1" name="pop_acnts" class="ukdropdown">
+                                      <!-- BEGIN BLOCK -->
+                                      <option value="{pop_values}" {selected}>{pop_display}</option>
+                                        <!-- END BLOCK -->
+                                      </select>
+
+                                   </td>
+                                  <td class="defafont_b"><input type="submit" value="GO" name="acntchg" class="ukbots"></td>
+                                  </form>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="defafont_b"><img border="0" src="images/inboxicon.gif" width="38" height="39"></td>
+                            <td class="defafont_b"><b><font size="5">My Mails (INBOX/Folder)</font></b></td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td width="50%">
+                          <div align="right">
+                          <table border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                              <td class="defafont_b">
+                                <p align="right">Go To Folder:&nbsp;&nbsp;</td>
+                              <td class="defafont_b">
+                              <form method="POST" name="fminbx2" action="inbox.php">
+                                  <select size="1" name="folders" class="ukdropdown">
+                                   <!-- BEGIN BLOCK2 -->
+                                   <option value="{folder_values}" {selected}>{folder_display}</option>
+                                   <!-- END BLOCK2 -->
+                                   </select>
+                              </td>
+                              <td class="defafont_b">
+                                <input type="hidden" name="pop_acnts" value="{pop_id}">
+                                <input type="submit" value="GO" name="B1" class="ukbots"></td>
+                            </tr>
+                            </form>
+                          </table>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="50%" class="defafont_b">{msg}</td>
+                      <td width="50%" class="defafont_b">
+                          <div align="right">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="100%" class="defafont_b">
+                                  <p align="right">
+                                <input type="button" value="Check For New Mail" name="B1" class="ukbots" onclick="window.open('../../../cgi-bin/fetchmail.cgi{parm}','pickup','scrollbars=yes,resizable=yes,screenX=50,screenY=50,left=50,top=50,width=300,height=250');return false;"></td>
+                              </tr>
+                            </table>
+                          </div>
+                      </td>
+                    </tr>
+                  </table>
+                  <form method="POST" name="fminbx3" action="mailproc.php">
+                  <table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#000000" bordercolorlight="#FFFFFF" bordercolordark="#000000">
+                    <tr>
+                      <td class="defafont_b" width="17" align="center" bgcolor="#CCCCCC"><b>&nbsp;</b></td>
+                      <td class="defafont_b" width="17" align="center" bgcolor="#CCCCCC"><b><img border="0" src="images/cont.gif" width="13" height="11"></b></td>
+                      <td class="defafont_b" width="17" align="center" bgcolor="#CCCCCC"><b><img border="0" src="images/links.gif" width="13" height="11"></b></td>
+                      <td class="defafont_b" width="18" align="center" bgcolor="#CCCCCC">
+                        <p align="center"><b>!</b></td>
+                      <td class="defafont_b" align="center" bgcolor="#CCCCCC"><b><img border="0" src="images/asc_order.gif" width="7" height="7">&nbsp; Date Received</b></td>
+                      <td class="defafont_b" align="center" bgcolor="#CCCCCC"><b><img border="0" src="images/asc_order.gif" width="7" height="7">&nbsp; Subject</b></td>
+                      <td class="defafont_b" align="center" bgcolor="#CCCCCC"><b><img border="0" src="images/asc_order.gif" width="7" height="7">&nbsp; From</b></td>
+                      <td class="defafont_b" align="center" bgcolor="#CCCCCC"><b>Options</b></td>
+                    </tr>
+                    <!-- BEGIN BLOCK3 -->
+                    <tr>
+                      <td class="defafont_b" width="17" align="center">{checkbox}</td>
+                      <td class="defafont_b" width="17" align="center">{mail_icon}</td>
+                      <td class="defafont_b" width="17" align="center">{attach_icon}</td>
+                      <td class="defafont_b" width="18" align="center">{priority_icon}</td>
+                      <td class="defafont_b"><b>{date}</b></td>
+                      <td class="defafont_b"><b>{subject}</b></td>
+                      <td class="defafont_b"><b>{from}</b></td>
+                      <td class="defafont_b" align="center">
+                              {option_icons}
+                      </td>
+                    </tr>
+                    <!-- END BLOCK3 -->
+                    {buttons}
+                  </table>
+                  <input type="hidden" name="action" value="">
+                  <input type="hidden" name="chkids" value="">
+                  <input type="hidden" name="id" value="">
+                  <input type="hidden" name="popid" value="{pop_id}">
+                  <input type="hidden" name="folderid" value="{folder_id}">
+                  </form>

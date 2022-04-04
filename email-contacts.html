@@ -1,0 +1,157 @@
+  <script language="javascript" type="text/javascript">
+    var ActiveEmails = new Array();
+    var Contacts = new Array();
+    var Emails = new Array();
+    var ContactEmails = new Array();
+
+    {emails_js}
+
+    {contacts_js}
+
+    {all_emails_js}
+
+    {contact_emails_js}
+
+    function LoadContacts(Form){
+      var show;
+      var added = 0;
+      var showedContacts = 0;
+
+      for(var i=0;i < Contacts.length;i++){
+        show = true;
+        added = 0;
+        for(var j=0;j < ContactEmails[Contacts[i][0]].length;j++){
+          for(var k=0;k < ActiveEmails.length;k++){
+            if(ActiveEmails[k] == Emails[parseInt(ContactEmails[Contacts[i][0]][j])]){
+              added++;
+            }
+          }
+        }
+
+        if(added < ContactEmails[Contacts[i][0]].length){
+          showedContacts++;
+          Form.contacts.length = showedContacts;
+          Form.contacts.options[showedContacts-1].value = Contacts[i][0];
+          Form.contacts.options[showedContacts-1].text = Contacts[i][1];
+        }
+      }
+    }
+
+    function LoadContactEmails(Form){
+      var contact = Form.contacts.value;
+      var show;
+      var showedEmails = 0;
+
+      if(Form.contacts.selectedIndex != -1){
+        for(var i=0;i < ContactEmails[contact].length;i++){
+          show = true;
+          for(var j=0;j < ActiveEmails.length;j++){
+            if(ActiveEmails[j] == Emails[ContactEmails[contact][i]]){
+              show = false;
+              break;
+            }
+          }
+
+          if(show){
+            showedEmails++;
+            Form.contact_emails.length = showedEmails;
+            Form.contact_emails.options[showedEmails-1].value = Emails[ContactEmails[contact][i]];
+            Form.contact_emails.options[showedEmails-1].text = Emails[ContactEmails[contact][i]];
+          }
+        }
+      }
+    }
+
+    function AddEmail(Form, email){
+      var goAdd = true;
+      for(var i=0;i < ActiveEmails.length;i++)
+        if(ActiveEmails[i] == email){
+          goAdd = false;
+          break;
+        }
+
+      if(goAdd){
+        ActiveEmails[ActiveEmails.length] = email;
+        Form.emails.length = ActiveEmails.length;
+        Form.emails.options[Form.emails.length-1].value = email;
+        Form.emails.options[Form.emails.length-1].text = email;
+      }
+    }
+
+    function AddEmailMultiple(Form){
+      for(var i=0;i < Form.contact_emails.length;i++){
+        if(Form.contact_emails.options[i].selected)
+          AddEmail(Form, Form.contact_emails.options[i].value);
+      }
+
+      LoadContacts(Form);
+      LoadContactEmails(Form);
+    }
+
+    function RemoveEmail(Form){
+      var NewActive = new Array();
+
+      for(var i=0;i < Form.emails.length;i++){
+        if(!Form.emails.options[i].selected){
+          NewActive[NewActive.length] = Form.emails.options[i].value;
+        }
+      }
+
+      ActiveEmails = NewActive;
+      Form.emails.length = ActiveEmails.length;
+      for(var i=0;i < ActiveEmails.length;i++){
+        Form.emails.options[i].text = ActiveEmails[i];
+        Form.emails.options[i].value = ActiveEmails[i];
+      }
+
+      LoadContacts(Form);
+      LoadContactEmails(Form);
+    }
+
+    function UpdateEmailContacts(){
+      var NewEmails = '';
+
+      for(var i=0;i < ActiveEmails.length;i++)
+        NewEmails += ((i) ? '; ' : '') + ActiveEmails[i];
+
+      opener.document.{email_field}.value = NewEmails;
+      opener.focus();
+      window.close();
+    }
+  </script>
+  <br>
+  <div align="center">
+    <b><font size="5">Contacts</font></b>
+    <form name="EmailContacts" method="post">
+      <table border="0" cellspacing="2" cellpadding="3">
+        <tr>
+          <td colspan="4" class="defafont_b">Other Email: <input class="uktextbox" type="text" name="other_email" size="35"> <input type="button" value="Add Email" class="ukbots" onclick="AddEmail(this.form, this.form.other_email.value); LoadContacts(this.form); LoadContactEmails(this.form); this.form.other_email.value = '';"></td>
+        </tr>
+        <tr>
+          <td class="defafont_b">
+            <select name="contacts" size="20" width="150" style="width:150px;" class="ukdropdown" onchange="LoadContactEmails(this.form)">
+            </select>
+          </td>
+          <td class="defafont_b" valign="top">
+            <select name="contact_emails" size="20" width="150" style="width:150px;" class="ukdropdown" multiple>
+            </select>
+          </td>
+          <td class="defafont_b" valign="middle">
+            <input type="button" class="ukbots" value="   &gt;&gt;   " onclick="AddEmailMultiple(this.form)"><br>
+            <input type="button" class="ukbots" value="   &lt;&lt;   " onclick="RemoveEmail(this.form)">
+          </td>
+          <td class="defafont_b">
+            <select name="emails" size="20" width="150" style="width:150px;" class="ukdropdown" multiple>
+              {emails}
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><br><input type="button" class="ukbots" value="     Done     " onclick="UpdateEmailContacts()"></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <script language="javascript" type="text/javascript">
+    LoadContacts(document.EmailContacts);
+  </script>

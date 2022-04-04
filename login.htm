@@ -1,0 +1,75 @@
+<html>
+<head>
+{meta-cache}
+<title>{page-title}</title>
+<style type="text/css">
+<!--
+.style1 {
+	font-size: 24px;
+	color: #666666;
+}
+.style2 {font-size: 18px; color: #666666; }
+-->
+</style>
+</head>
+<body>
+<form action="{action-script}" method="POST" name="login_frm" autocomplete=Off>
+<table width="100%" height="50%"  border="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="364" height="178">&nbsp;</td>
+    <td width="138">&nbsp;</td>
+    <td width="123">&nbsp;</td>
+    <td width="330">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="22"></td>
+    <td colspan="2" valign="top"> <div align="center" class="style2">ALTO - MAILER
+    </div></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="23"></td>
+    <td colspan="2"><div align="center">
+      <hr>
+    </div></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="24">&nbsp;</td>
+    <td colspan="2" valign="top">Username: 
+      <input type="text" name="_u1" maxlength="16"></td>
+    <td>&nbsp;</td>
+    </tr>
+  <tr>
+    <td height="24">&nbsp;</td>
+    <td colspan="2" valign="top">Password:
+      <input type="password" name="_p1" maxlength="16"></td>
+    <td>&nbsp;</td>
+    </tr>
+  <tr>
+    <td height="21">&nbsp;</td>
+    <td colspan="2" valign="top"><p align="left"><input type="checkbox" name="_rem" value="Y">Remember my ID on this computer<br>
+        </p></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="26">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td valign="top"><input type="submit" name="Submit" value="LOG - IN"></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="44">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<input type="hidden" name="_challenge" value="{_challenge}">
+<input type="hidden" name="_datestamp" value="{_datestamp}">
+<input type="hidden" name="_authcode1" value="{_authcode1}">
+<input type="hidden" name="_authcode2" value="{_authcode2}">
+</form>
+</body>
+</html>

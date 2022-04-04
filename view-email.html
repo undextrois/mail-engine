@@ -1,0 +1,92 @@
+                  <table border="0" cellspacing="0" cellpadding="3" width="100%">
+                    <tr>
+                      <td width="50%">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="defafont_b"><img border="0" src="images/inboxicon.gif" width="38" height="39"></td>
+                            <td class="defafont_b"><b><font size="5">Sent Email</font></b></td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td width="50%">
+                          <div align="right">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="100%">
+                                <input type="button" value="Re-Send This Email" class="ukbots" onclick="location.href='{action_script}?Action=Resend&message_id={message_id}&pop_account={pop_account}'">
+                                <input type="button" value="Delete This Email" class="ukbots" onclick="location.href='sent-items.php?Action=Delete&email={message_id}&pop_account={pop_account}'">
+                                <input type="button" value="Return To Sent Items" class="ukbots" onclick="location.href='sent-items.php?pop_account={pop_account}'"></td>
+                              </tr>
+                            </table>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="100%" class="defafont_b" colspan="2">
+                        <table border="0" cellspacing="0" cellpadding="3" width="903">
+                          <tr>
+                            <td class="defafont_b" width="91" valign="top"><b>Sent From:&nbsp;</b></td>
+                            <td class="defafont_b" width="796" valign="top">{email_from}</td>
+                          </tr>
+                          <tr>
+                            <td class="defafont_b" width="91" valign="top"><b>Sent To:</b></td>
+                            <td class="defafont_b" width="796" valign="top">{email_to}</td>
+                          </tr>
+                          <tr>
+                            <td class="defafont_b" width="91" valign="top"><b>CC:</b></td>
+                            <td class="defafont_b" width="796" valign="top">{email_cc}</td>
+                          </tr>
+                          <tr>
+                            <td class="defafont_b" width="91" valign="top"><b>BCC:</b></td>
+                            <td class="defafont_b" width="796" valign="top">{email_bcc}</td>
+                          </tr>
+                          <tr>
+                            <td class="defafont_b" width="91" valign="top"><b>Date Sent:&nbsp;</b></td>
+                            <td class="defafont_b" width="796" valign="top"><b>{email_date}</b></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="100%" class="defafont_b" colspan="2">
+                        <hr color="#000000">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="100%" class="defafont_b" colspan="2">
+                        <table border="1" width="100%" bordercolor="#000000" cellspacing="0" bordercolordark="#000000" bordercolorlight="#FFFFFF" cellpadding="3">
+                          <tr>
+                            <td width="100%" bgcolor="#CCCCCC" class="defafont_b"><b>SUBJECT: {email_subject}</b></td>
+                          </tr>
+                          <tr>
+                            <td width="100%" class="defafont_b" height="150" valign="top">{email_message}</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="100%" class="defafont_b" colspan="2">
+                        <hr color="#000000">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="100%" class="defafont_b" colspan="2">
+                        <table border="1" bordercolorlight="#FFFFFF" cellspacing="0" cellpadding="3" bordercolordark="#000000" bordercolor="#000000">
+                          <tr>
+                            <td bgcolor="#CCCCCC" class="defafont_b" colspan="4">Attachments:</td>
+                          </tr>
+                          <!-- BEGIN ATTACHMENTS -->
+                          <tr>
+                            <td class="defafont_b" align="center"><img border="0" src="images/{attachment_icon}"></td>
+                            <td class="defafont_b">{attachment_filename}</td>
+                            <td class="defafont_b" align="right" nowrap>{attachment_size}</td>
+                            <td class="defafont_b"><input type="button" value="Download" class="ukbots" onclick="location.href='{action_script}?Action=Download&attachment_id={attachment_id}&pop_account={pop_account}&message_id={message_id}'"></td>
+                          </tr>
+                          <!-- END ATTACHMENTS -->
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>

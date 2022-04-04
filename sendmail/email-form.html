@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>{EmailPageTitle}</title>
+</head>
+<body>
+	<br>
+	{EmailPageTitle}
+	<br>
+	<form method="post" name="{FormName}" ENCTYPE="multipart/form-data" action="{FormAction}">
+	<table border="0" cellpadding="3" cellspacing="0">
+	  <tr>
+	    <td>From Email : </td>
+	    <td>{FromEmailField}</td>
+	  </tr>
+	  <tr>
+	    <td>From Name : </td>
+	    <td>{FromNameField}</td>
+	  </tr>
+	  <tr>
+	    <td>To Email : </td>
+	    <td>{ToEmailField}</td>
+	  </tr>
+	  <tr>
+	    <td>To Name : </td>
+	    <td>{ToNameField}</td>
+	  </tr>
+	  <tr>
+	    <td>CC : </td>
+	    <td>{CCField}</td>
+	  </tr>
+	  <tr>
+	    <td>BCC : </td>
+	    <td>{BCCField}</td>
+	  </tr>
+	  <tr>
+	    <td>Subject : </td>
+	    <td>{SubjectField}</td>
+	  </tr>
+	  <tr>
+	    <td>Message : </td>
+	    <td>{MessageField}</td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td><font size="1">Only documents with the following extension names are allowed <br>to be uploaded ({AllowedExtensions})</td>
+	  </tr>
+	  <tr>
+	    <td>Attachment : </td>
+	    <td>{AttachmentField}</td>
+	  </tr>
+	  <tr>
+	    <td valign="top">Content Type : </td>
+	    <td>
+	      <input type="radio" name="content_type" value="text/html" checked> HTML<br>
+	      <input type="radio" name="content_type" value="text/plain"> Plain Text<br>
+	      <br>
+	      <div class="smallfont" style="width:350">(Warning: when using HTML formatting, be sure that the message body is in full HTML format.
+	      Text breaks will be of no effect in HTML format email)</div>
+	    </td>
+	  </tr>
+	  <tr><td colspan="2">&nbsp;</td></tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td>
+	      <input type="submit" value="{SubmitValue}">
+	    </td>
+	  </tr>
+	</table>
+	<br>
+	<input type="hidden" name="Action" value="{FormActionValue}">
+		{AddHiddenFormFields}
+	</form>
+</body>
+</html>

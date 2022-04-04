@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+.style1 {
+	font-size: 24px;
+	color: #666666;
+}
+-->
+</style>
+</head>
+
+<body>
+<table width="100%" height="100%"  border="0">
+  <tr>
+    <td colspan="3"><div align="center" class="style1">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>ALTO - MAILER</p>
+    </div></td>
+  </tr>
+  <tr>
+    <td width="39%" height="35">&nbsp;</td>
+    <td width="33%">Username: 
+      <input type="text" name="textfield">    </td>
+    <td width="28%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="41">&nbsp;</td>
+    <td>Password:
+    <input type="password" name="textfield"></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="31">&nbsp;</td>
+    <td><p align="left"><input type="checkbox" name="checkbox" value="checkbox">Remember User
+        <input type="submit" name="Submit" value="LOG - IN">       
+    </p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

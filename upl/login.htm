@@ -1,0 +1,49 @@
+<html>
+<head>
+{meta-cache}
+<title>{page-title}</title>
+<style type="text/css">
+<!--
+.style1 {
+	font-size: 24px;
+	color: #666666;
+}
+-->
+</style>
+</head>
+<body>
+<form action="{action-script}" method="POST" name="login_frm" autocomplete=Off>
+<table width="100%" height="50%"  border="0">
+  <tr>
+    <td colspan="3"><div align="center" class="style1">
+      <p>ALTO - MAILER</p>
+    </div></td>
+  </tr>
+  <tr>
+    <td width="39%" height="35">&nbsp;</td>
+    <td width="33%">Username: 
+      <input type="text" name="_u1" maxlength="16"></td>
+    <td width="28%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="41">&nbsp;</td>
+    <td>Password:
+    <input type="password" name="_p1" maxlength="16"></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="31">&nbsp;</td>
+    <td><p align="left"><input type="checkbox" name="_rem" value="Y">Remember my ID on this computer<br>
+    <input type="submit" name="Submit" value="LOG - IN">
+    </p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<input type="hidden" name="_challenge" value="{_challenge}">
+<input type="hidden" name="_datestamp" value="{_datestamp}">
+<input type="hidden" name="_authcode1" value="{_authcode1}">
+<input type="hidden" name="_authcode2" value="{_authcode2}">
+</form>
+</body>
+</html>

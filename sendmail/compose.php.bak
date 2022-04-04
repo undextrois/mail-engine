@@ -1,0 +1,58 @@
+<?
+	include 'class.phpvars.php';
+	include 'misc-functions.php';
+	include 'template.inc';
+	$Vars = new PHPVars;
+	
+	if($Vars->Post['Action'] == 'Send Email'){
+		include 'class.file-uploader.php';
+		include 'class.phpmailer.php';
+		
+		$File = new FileUploader('attachment', 'doc|xls|jpg|png|bmp|gif');
+		if($File->Uploaded && $File->Uploaded){
+		}
+		
+		$Mail = new phpmailer;
+		
+		$from_email = stripslashes_gpc($Vars->Post['from_email']);
+		$from_name = stripslashes_gpc($Vars->Post['from_name']);
+		$to_email = stripslashes_gpc($Vars->Post['to_email']);
+		$to_name = stripslashes_gpc($Vars->Post['to_name']);
+		$cc = stripslashes_gpc($Vars->Post['cc']);
+		$bcc = stripslashes_gpc($Vars->Post['bcc']);
+		$subject = stripslashes_gpc($Vars->Post['subject']);
+		$message = stripslashes_gpc($Vars->Post['message']);
+		
+		$ccs = explode(',', str_replace(';', ',', $cc));
+		
+		$Mail->From = $from_email;
+		$Mail->FromName = $from_name;
+		$Mail->AddAddress($to_email, $to_name);
+		
+	}
+	
+
+	$tpl=new Template(".","keep"); //required for all template pages
+	$tpl->set_file(array("background"=>"email-form.html"));   //specify which html file to point to
+
+	$tpl->set_var('EmailPageTitle','Test Email Sending');
+	$tpl->set_var('FormName','EmailForm');
+	$tpl->set_var('FormAction',basename($Vars->Server['PHP_SELF']));
+	$tpl->set_var('FromEmailField',InputTextRaw('from_email', $from_email));
+	$tpl->set_var('FromNameField',InputTextRaw('from_name', $from_name));
+	$tpl->set_var('ToEmailField',InputTextRaw('to_email', $to_email));
+	$tpl->set_var('ToNameField',InputTextRaw('to_name', $to_name));
+	$tpl->set_var('CCField',InputTextRaw('cc', $cc));
+	$tpl->set_var('BCCField',InputTextRaw('bcc', $bcc));
+	$tpl->set_var('SubjectField',InputTextRaw('subject', $subject));
+	$tpl->set_var('MessageField',TextAreaRaw('message', $message, 40, 12));
+	$tpl->set_var('AttachmentField',InputFileRaw('attachment'));
+	$tpl->set_var('AllowedExtensions','doc,xls,jpg,png,bmp,gif');
+	$tpl->set_var('FormActionValue', 'Send Email');
+	$tpl->set_var('SubmitValue', 'Send');
+	$tpl->set_var('AddHiddenFormFields', '');
+
+	$tpl->parse("background", array("background"));
+	$tpl->finish("background");
+	$tpl->p("background");
+?>
